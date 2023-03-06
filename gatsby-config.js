@@ -22,11 +22,19 @@ module.exports = {
   },
   plugins: [
     `gatsby-plugin-image`,
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     path: `${__dirname}/content/blog`,
+    //     name: `blog`,
+
+    //   },
+    // },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: `gatsby-source-git`,
       options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
+        name: `content`,
+        remote: `https://github.com/pieh/git-source-update-content.git`,
       },
     },
     {
