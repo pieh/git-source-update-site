@@ -30,13 +30,21 @@ module.exports = {
 
     //   },
     // },
-    {
-      resolve: `gatsby-source-git`,
-      options: {
-        name: `content`,
-        remote: `https://github.com/pieh/git-source-update-content.git`,
-      },
-    },
+    process.env.GATSBY_CLOUD === `true`
+      ? {
+          resolve: `gatsby-source-git`,
+          options: {
+            name: `content`,
+            remote: `https://github.com/pieh/git-source-update-content.git`,
+          },
+        }
+      : {
+          resolve: `gatsby-source-filesystem`,
+          options: {
+            path: `${__dirname}/content/blog`,
+            name: `blog`,
+          },
+        },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
